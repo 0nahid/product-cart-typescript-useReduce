@@ -15,7 +15,12 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
-
+const itemsStyle = {
+    marginTop: '10px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+}
 interface Products {
     id: number;
     name: string;
@@ -68,11 +73,8 @@ export default function Product() {
                         {
                             products.map((product) => {
                                 return (
-                                    <Item style={{
-                                        marginTop: '10px',
-                                    }}
-                                        key={product.id}>
-                                        {product.name} - {product.price} $   <Button variant="contained" endIcon={<AddShoppingCartIcon />}
+                                    <Item style={itemsStyle} key={product.id}>
+                                        <h4>{product.name} - {product.price} $ </h4>  <Button variant="contained" endIcon={<AddShoppingCartIcon />}
                                             onClick={() => addToCart(product)}
                                         >
                                             cart
@@ -95,9 +97,7 @@ export default function Product() {
                                 {
                                     carts.map((cart) => {
                                         return (
-                                            <Item style={{
-                                                marginTop: '10px',
-                                            }} key={cart.id}>
+                                            <Item style={itemsStyle} key={cart.id}>
                                                 {cart.name} - {cart.price} $ <Button variant="contained" color="error" endIcon={<DeleteIcon />}
                                                     onClick={() => removeFromCart(cart.id)}
                                                 >Remove</Button>
